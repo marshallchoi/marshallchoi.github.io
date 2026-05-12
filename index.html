@@ -1,0 +1,1489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ji-Ho Choi — Pavement Engineering Researcher</title>
+  <meta name="description" content="Ji-Ho Choi (최지호) — Pavement Engineering Researcher at Inha University. Specializing in pavement materials, infrastructure risk analytics, and physics-informed machine learning. PhD applicant in Civil Engineering." />
+  <meta name="keywords" content="Ji-Ho Choi, Civil Engineering, Pavement Engineering, Physics-Informed ML, Fracture Mechanics, GIS, Inha University, PhD Applicant" />
+  <meta name="author" content="Ji-Ho Choi" />
+  <meta property="og:title" content="Ji-Ho Choi — Pavement Engineering Researcher" />
+  <meta property="og:description" content="Bridging classical fracture mechanics with physics-informed machine learning to build more resilient infrastructure." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://jiho2646.github.io/" />
+  <meta name="twitter:card" content="summary" />
+  <link rel="canonical" href="https://jiho2646.github.io/" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #f8f8f7;
+      --surface: #ffffff;
+      --text: #111110;
+      --text-secondary: #6b6b65;
+      --text-tertiary: #9b9b93;
+      --accent: #1d4ed8;
+      --accent-light: #eff3ff;
+      --border: #e5e5e2;
+      --nav-h: 60px;
+      --max-w: 860px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      height: var(--nav-h);
+      background: rgba(248, 248, 247, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+    }
+
+    .nav-name {
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text);
+    }
+
+    .nav-name span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 13px;
+      font-weight: 400;
+      color: var(--text-secondary);
+      text-decoration: none;
+      letter-spacing: 0.01em;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── LAYOUT ── */
+    main {
+      max-width: var(--max-w);
+      margin: 0 auto;
+      padding: 0 40px;
+    }
+
+    section {
+      padding: calc(var(--nav-h) + 60px) 0 80px;
+    }
+
+    section + section {
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: var(--nav-h);
+      padding-bottom: 60px;
+    }
+
+    .hero-eyebrow {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 24px;
+    }
+
+    .hero-name {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(48px, 6vw, 72px);
+      font-weight: 400;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .hero-name-kr {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--text-tertiary);
+      margin-bottom: 28px;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-tagline {
+      font-size: 18px;
+      font-weight: 300;
+      color: var(--text-secondary);
+      max-width: 520px;
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .hero-tagline strong {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 44px;
+    }
+
+    .pill {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.03em;
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid #c7d7f9;
+      padding: 5px 13px;
+      border-radius: 100px;
+    }
+
+    .hero-links {
+      display: flex;
+      gap: 16px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 14px;
+      font-weight: 500;
+      padding: 10px 22px;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.18s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-primary:hover { background: #1740c0; }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover { border-color: var(--text-secondary); background: var(--surface); }
+
+    .hero-scroll-hint {
+      position: absolute;
+      bottom: 36px;
+      left: 40px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-scroll-hint::after {
+      content: '';
+      width: 32px;
+      height: 1px;
+      background: var(--text-tertiary);
+    }
+
+    /* ── SECTION LABELS ── */
+    .sec-label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 36px;
+    }
+
+    /* ── ABOUT ── */
+    .about-text {
+      font-size: 19px;
+      font-weight: 300;
+      line-height: 1.75;
+      color: var(--text);
+      max-width: 700px;
+    }
+
+    .about-text strong {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    /* ── EDUCATION ── */
+    .edu-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px 40px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .edu-item:first-of-type { border-top: 1px solid var(--border); }
+
+    .edu-degree {
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .edu-school {
+      font-size: 14px;
+      color: var(--text-secondary);
+    }
+
+    .edu-year {
+      font-size: 13px;
+      color: var(--text-tertiary);
+      white-space: nowrap;
+      text-align: right;
+      padding-top: 2px;
+    }
+
+    .edu-note {
+      font-size: 13px;
+      color: var(--accent);
+      font-style: italic;
+      margin-top: 4px;
+    }
+
+    /* ── RESEARCH ── */
+    .research-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0 32px;
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .research-item:first-of-type { border-top: 1px solid var(--border); }
+
+    .research-year {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--text-tertiary);
+      padding-top: 4px;
+    }
+
+    .research-title {
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .research-org {
+      font-size: 13px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    .research-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* ── PUBLICATIONS ── */
+    .pub-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .pub-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .pub-card:hover {
+      border-color: #c7d7f9;
+      box-shadow: 0 4px 28px rgba(29, 78, 216, 0.07);
+    }
+
+    .pub-card-head {
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .pub-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .pub-status {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      background: var(--accent-light);
+      color: var(--accent);
+      border: 1px solid #c7d7f9;
+      padding: 3px 10px;
+      border-radius: 100px;
+    }
+
+    .pub-status.conf {
+      background: #f0fdf4;
+      color: #16a34a;
+      border-color: #bbf7d0;
+    }
+
+    .pub-venue {
+      font-size: 12px;
+      color: var(--text-tertiary);
+      font-style: italic;
+    }
+
+    .pub-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.45;
+      color: var(--text);
+      margin-bottom: 6px;
+      text-wrap: pretty;
+    }
+
+    .pub-card-authors {
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .pub-card-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .pub-card-col {
+      padding: 20px 28px;
+    }
+
+    .pub-card-col + .pub-card-col {
+      border-left: 1px solid var(--border);
+      background: #fafffe;
+    }
+
+    .pub-card-col-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pub-card-col:first-child .pub-card-col-label { color: var(--accent); }
+    .pub-card-col + .pub-card-col .pub-card-col-label { color: #16a34a; }
+
+    .pub-card-col-label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    .pub-card-col-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .pub-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 12px;
+    }
+
+    .tag {
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--text-secondary);
+      background: #f0f0ee;
+      border: 1px solid var(--border);
+      padding: 3px 9px;
+      border-radius: 4px;
+    }
+
+    /* ── PROJECTS ── */
+    .projects-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .proj-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+
+    .proj-card:hover {
+      border-color: #c7d7f9;
+      box-shadow: 0 4px 28px rgba(29, 78, 216, 0.07);
+    }
+
+    .proj-card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 16px;
+      padding: 24px 28px 20px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .proj-icon {
+      width: 40px;
+      height: 40px;
+      background: var(--accent-light);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .proj-icon svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; }
+
+    .proj-card-head-info { flex: 1; }
+
+    .proj-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 6px;
+    }
+
+    .proj-card-meta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .proj-status {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 100px;
+      border: 1px solid;
+    }
+
+    .proj-status.active { background: var(--accent-light); color: var(--accent); border-color: #c7d7f9; }
+    .proj-status.complete { background: #f0fdf4; color: #16a34a; border-color: #bbf7d0; }
+    .proj-status.ongoing { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+
+    .proj-card-body {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .proj-card-col {
+      padding: 20px 24px;
+    }
+
+    .proj-card-col + .proj-card-col {
+      border-left: 1px solid var(--border);
+    }
+
+    .proj-card-col:nth-child(2) { background: #f8faff; }
+    .proj-card-col:nth-child(3) { background: #fafffe; }
+
+    .proj-col-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .proj-card-col:nth-child(1) .proj-col-label { color: var(--text-tertiary); }
+    .proj-card-col:nth-child(2) .proj-col-label { color: var(--accent); }
+    .proj-card-col:nth-child(3) .proj-col-label { color: #16a34a; }
+
+    .proj-col-label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: currentColor;
+      flex-shrink: 0;
+    }
+
+    .proj-col-text {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    .proj-col-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 5px;
+      margin-top: 10px;
+    }
+
+    .proj-media {
+      border-top: 1px solid var(--border);
+      padding: 20px 28px 24px;
+      background: #fafafa;
+    }
+    .proj-media-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .proj-media-label::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--text-tertiary);
+    }
+    .proj-media image-slot {
+      width: 100%;
+      height: 220px;
+      display: block;
+      border-radius: 10px;
+    }
+
+    /* ── AWARDS ── */
+    .award-item {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0 32px;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .award-item:first-of-type { border-top: 1px solid var(--border); }
+
+    .award-year { font-size: 12px; color: var(--text-tertiary); padding-top: 3px; }
+    .award-name { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
+    .award-org { font-size: 13px; color: var(--text-secondary); }
+
+    /* ── SKILLS ── */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .skill-group-title {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 12px;
+    }
+
+    .skill-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .skill-list li {
+      font-size: 14px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .skill-list li::before {
+      content: '';
+      width: 4px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ── TEACHING / VOLUNTEERING ── */
+    .list-item {
+      padding: 20px 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 0 32px;
+    }
+
+    .list-item:first-of-type { border-top: 1px solid var(--border); }
+
+    .list-year { font-size: 12px; color: var(--text-tertiary); padding-top: 3px; }
+    .list-title { font-size: 15px; font-weight: 500; margin-bottom: 3px; }
+    .list-sub { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding-bottom: 120px;
+    }
+
+    .contact-headline {
+      font-family: 'DM Serif Display', Georgia, serif;
+      font-size: clamp(32px, 4vw, 52px);
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.02em;
+      margin-bottom: 24px;
+      max-width: 520px;
+    }
+
+    .contact-headline em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .contact-sub {
+      font-size: 16px;
+      color: var(--text-secondary);
+      max-width: 440px;
+      margin-bottom: 40px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .contact-link {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 15px;
+      font-weight: 400;
+      transition: color 0.18s;
+    }
+
+    .contact-link:hover { color: var(--accent); }
+
+    .contact-link-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.18s, background 0.18s;
+    }
+
+    .contact-link:hover .contact-link-icon {
+      border-color: #c7d7f9;
+      background: var(--accent-light);
+    }
+
+    .contact-link-icon svg { width: 16px; height: 16px; stroke: currentColor; fill: none; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px 40px;
+      max-width: var(--max-w);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    footer p { font-size: 12px; color: var(--text-tertiary); }
+
+    /* ── MOBILE ── */
+    @media (max-width: 680px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      main { padding: 0 20px; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-links { flex-wrap: wrap; }
+      footer { padding: 24px 20px; flex-direction: column; gap: 8px; text-align: center; }
+    }
+
+    /* ── TWEAKS PANEL ── */
+    #tweaks-panel {
+      display: none;
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      box-shadow: 0 8px 40px rgba(0,0,0,0.10);
+      padding: 20px 22px;
+      z-index: 9999;
+      width: 220px;
+    }
+
+    #tweaks-panel.visible { display: block; }
+
+    #tweaks-panel h3 {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin-bottom: 16px;
+    }
+
+    .tweak-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .tweak-row label { font-size: 12px; font-weight: 500; color: var(--text-secondary); }
+
+    .tweak-row select,
+    .tweak-row input[type="color"] {
+      font-family: inherit;
+      font-size: 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 6px 8px;
+      background: var(--bg);
+      color: var(--text);
+      width: 100%;
+    }
+
+    .tweak-row input[type="color"] { height: 32px; padding: 2px 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Ji-Ho <span>Choi</span></span>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#research">Research</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero" style="position:relative;">
+    <p class="hero-eyebrow">Ph.D. Applicant · Civil Engineering</p>
+    <h1 class="hero-name">Ji-Ho Choi</h1>
+    <p class="hero-name-kr"></p>
+    <p class="hero-tagline">
+      <strong>Pavement Engineering Researcher</strong> — bridging classical fracture mechanics with physics-informed machine learning to build more resilient infrastructure.
+    </p>
+    <div class="hero-pills">
+      <span class="pill">Pavement Materials</span>
+      <span class="pill">Infrastructure Risk Analytics</span>
+      <span class="pill">Physics-Informed ML</span>
+      <span class="pill">Fracture Mechanics</span>
+      <span class="pill">GIS &amp; Spatial Analysis</span>
+    </div>
+    <div class="hero-links">
+      <a href="#contact" class="btn btn-primary">Get in touch</a>
+      <a href="Ji-Ho_Choi_CV.pdf" download class="btn btn-secondary">↓ Download CV (PDF)</a>
+      <a href="https://github.com/jiho2646" target="_blank" class="btn btn-secondary">GitHub</a>
+      <a href="https://www.linkedin.com/in/jhc99" target="_blank" class="btn btn-secondary">LinkedIn</a>
+    </div>
+    <div class="hero-scroll-hint">Scroll to explore</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <p class="sec-label">Research Vision</p>
+    <p class="about-text">
+      My work sits at the intersection of <strong>classical pavement mechanics</strong> and <strong>data-driven infrastructure intelligence</strong>. I aim to enhance the resilience of road infrastructure against extreme climate conditions — particularly icing events and thermal stress — by coupling physics-based failure models with physics-constrained machine learning.<br><br>
+      Where traditional approaches rely on empirical design charts, I develop methods that are simultaneously interpretable to engineers and scalable at the network level. The goal: infrastructure that doesn't just survive today's loads, but adaptable to tomorrow's climate extremes.
+    </p>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <p class="sec-label">Education</p>
+
+    <div class="edu-item">
+      <div>
+        <p class="edu-degree">M.S. in Smart City Engineering</p>
+        <p class="edu-school">Inha University, Incheon, South Korea</p>
+        <p class="edu-note">Expected February 2027 &nbsp;·&nbsp; GPA 4.0 / 4.0</p>
+      </div>
+      <div class="edu-year">2025 – 2027</div>
+    </div>
+
+    <div class="edu-item">
+      <div>
+        <p class="edu-degree">B.S. in Civil Engineering</p>
+        <p class="edu-school">Inha University, Incheon, South Korea</p>
+        <p class="edu-note" style="color:var(--text-tertiary)">Graduated February 2025 &nbsp;·&nbsp; GPA 3.16 / 4.0</p>
+      </div>
+      <div class="edu-year">2019 – 2025</div>
+    </div>
+  </section>
+
+  <!-- RESEARCH EXPERIENCE -->
+  <section id="research">
+    <p class="sec-label">Research Experience</p>
+
+    <div class="research-item">
+      <div class="research-year">Sep 2025 –<br>Aug 2027</div>
+      <div>
+        <p class="research-title">Spatiotemporal Nonlinear Temperature Distribution of Airport Pavement using AI</p>
+        <p class="research-org">NRF (National Research Foundation of Korea) · Road &amp; Airfield Lab, Inha University</p>
+        <p class="research-desc">Developing AI-based predictive models using long-term field measurement data to analyze nonlinear temperature distribution in airport pavements — bridging structural thermal behavior with machine learning generalization.</p>
+      </div>
+    </div>
+
+    <div class="research-item">
+      <div class="research-year">Jun 2025 –<br>Dec 2026</div>
+      <div>
+        <p class="research-title">Structural &amp; Statistical Analysis of Cement-Based Bridge Deck Pavement Under Traffic &amp; Environmental Loads</p>
+        <p class="research-org">Korea Expressway Corporation Research Institute · Road &amp; Airfield Lab, Inha University</p>
+        <p class="research-desc">Conducting nonlinear FEA and machine learning to simulate pavement structure behavior under combined traffic and environmental loading scenarios. Aims to derive stress-based design parameters for expressway bridge decks.</p>
+      </div>
+    </div>
+
+    <div class="research-item">
+      <div class="research-year">Feb 2026 –<br>Aug 2026</div>
+      <div>
+        <p class="research-title">Snow Removal &amp; Freezing Vulnerability Analysis in Seoul</p>
+        <p class="research-org">The Seoul Institute / KSRE · Road &amp; Airfield Lab, Inha University</p>
+        <p class="research-desc">Analyzed road surface hazard factors and assessed freezing vulnerability across Seoul using Digital Elevation Models (DEM) and GIS spatial analysis. Developed a condition-based selection system for priority maintenance zones.</p>
+      </div>
+    </div>
+
+    <div class="research-item">
+      <div class="research-year">Apr 2023 –<br>Dec 2027</div>
+      <div>
+        <p class="research-title">Technologies for Reducing Road Surface Hazards &amp; Evaluating Road Safety Levels</p>
+        <p class="research-org">KAIA (Korea Agency for Infrastructure Technology Advancement) · Road &amp; Airfield Lab, Inha University</p>
+        <p class="research-desc">Developing integrated technologies for road hazard reduction and safety-level evaluation using GIS and statistical methods. Contributed as undergraduate and continued as graduate researcher across project phases.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <p class="sec-label">Publications &amp; Papers</p>
+    <div class="pub-cards">
+
+      <!-- PUB 1 -->
+      <div class="pub-card">
+        <div class="pub-card-head">
+          <div class="pub-card-meta">
+            <span class="pub-status conf" style="background:#fff7ed;color:#c2410c;border-color:#fed7aa">🏆 Best Paper Award</span>
+            <span class="pub-venue">KSRE 2026 Spring Conference</span>
+          </div>
+          <p class="pub-card-title">Estimation of Highway Geometric Features Using Public Digital Elevation Models (DEM) and GIS Road Network Data</p>
+          <p class="pub-card-authors">Choi, J.H., Park, G., Jeong, J.H. (2026)</p>
+        </div>
+        <div class="pub-card-body">
+          <div class="pub-card-col">
+            <p class="pub-card-col-label">Methodology</p>
+            <p class="pub-card-col-text">Extracted highway geometric features (horizontal curve radius, vertical grades) from public DEM data fused with GIS road network node-link data. Applied least-squares curve fitting on GIS-derived centerline point sequences.</p>
+            <div class="pub-tags"><span class="tag">DEM</span><span class="tag">GIS Node-Link</span><span class="tag">Curve Fitting</span></div>
+          </div>
+          <div class="pub-card-col">
+            <p class="pub-card-col-label">Impact</p>
+            <p class="pub-card-col-text">Awarded Best Paper at KSRE 2026 Spring Conference. Enables scalable, survey-free geometric road inventory extraction at the national level — directly applicable to safety risk classification systems.</p>
+            <div class="pub-tags"><span class="tag">Best Paper Award</span><span class="tag">Scalable</span><span class="tag">Road Inventory</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PUB 2 -->
+      <div class="pub-card">
+        <div class="pub-card-head">
+          <div class="pub-card-meta">
+            <span class="pub-status conf">International Conference</span>
+            <span class="pub-venue">2025 International Conference for Road Engineers, pp. 102–103</span>
+          </div>
+          <p class="pub-card-title">Nonlinear Fracture Mechanics Analysis of Engineered Material Arresting Systems (EMAS) Under Physical Stress</p>
+          <p class="pub-card-authors">Ji-Ho Choi</p>
+        </div>
+        <div class="pub-card-body">
+          <div class="pub-card-col">
+            <p class="pub-card-col-label">Methodology</p>
+            <p class="pub-card-col-text">Conducted nonlinear finite element analysis (FEA) in ABAQUS to model crack initiation and propagation in EMAS foam under aircraft overrun loading. Applied cohesive zone modeling (CZM) to simulate energy dissipation mechanisms.</p>
+            <div class="pub-tags">
+              <span class="tag">ABAQUS</span>
+              <span class="tag">Nonlinear FEA</span>
+              <span class="tag">CZM</span>
+            </div>
+          </div>
+          <div class="pub-card-col">
+            <p class="pub-card-col-label">Impact</p>
+            <p class="pub-card-col-text">Characterized the fracture toughness and load-displacement behavior of EMAS under realistic stress conditions, providing validated simulation parameters for aviation infrastructure safety design and material optimization.</p>
+            <div class="pub-tags">
+              <span class="tag">Fracture Toughness</span>
+              <span class="tag">Aviation Safety</span>
+              <span class="tag">Material Design</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PUB 3 -->
+      <div class="pub-card">
+        <div class="pub-card-head">
+          <div class="pub-card-meta">
+            <span class="pub-status conf">Technical Report</span>
+            <span class="pub-venue">Inha University — Infrastructure Analytics Group</span>
+          </div>
+          <p class="pub-card-title">Automated Highway Geometric Structure Prediction Using DEM and GIS Spatial Analysis</p>
+          <p class="pub-card-authors">Ji-Ho Choi</p>
+        </div>
+        <div class="pub-card-body">
+          <div class="pub-card-col">
+            <p class="pub-card-col-label">Methodology</p>
+            <p class="pub-card-col-text">Automated estimation of horizontal curve radius and longitudinal grades using 5m-resampled Digital Elevation Model (DEM) data processed through GIS spatial analysis pipelines. Developed curvature-fitting algorithms on point-cloud road centerlines.</p>
+            <div class="pub-tags">
+              <span class="tag">GIS / ArcGIS</span>
+              <span class="tag">DEM (5m)</span>
+              <span class="tag">Curvature Fitting</span>
+            </div>
+          </div>
+          <div class="pub-card-col">
+            <p class="pub-card-col-label">Impact</p>
+            <p class="pub-card-col-text">Achieved high precision validated against as-built construction drawings using RMSE and MAE metrics. Eliminates manual surveying effort for geometric road inventories, enabling scalable national-level highway characterization.</p>
+            <div class="pub-tags">
+              <span class="tag">RMSE / MAE</span>
+              <span class="tag">Survey Automation</span>
+              <span class="tag">Scalable Pipeline</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <p class="sec-label">Selected Projects</p>
+    <div class="projects-stack">
+
+      <!-- PROJECT 0 — EXPD (Killer Achievement) -->
+      <div class="proj-card">
+        <div class="proj-card-head">
+          <div class="proj-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg>
+          </div>
+          <div class="proj-card-head-info">
+            <p class="proj-card-title">M-E Design Framework for Korean Expressway Concrete Pavements (EXPD)</p>
+            <div class="proj-card-meta">
+              <span class="proj-status complete">Completed · Manuscript in Preparation</span>
+              <span style="font-size:12px;color:var(--text-tertiary)">Mechanistic-Empirical Design · National Software</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-col">
+            <p class="proj-col-label">Overview</p>
+            <p class="proj-col-text">Contributed to developing localized mechanistic-empirical (M-E) performance prediction models for CRCP and JPCP under the 30-year long-life expressway design standard in Korea.</p>
+          </div>
+          <div class="proj-card-col">
+            <p class="proj-col-label">Methodology</p>
+            <p class="proj-col-text">Calibrated punchout and fatigue cracking transfer functions utilizing extensive LTPP data. Directly implemented advanced concrete fatigue models (e.g., Roesler et al., 2024) and finite element stress regression algorithms into the software computational engine.</p>
+            <div class="proj-col-tags">
+              <span class="tag">M-E Calibration</span><span class="tag">LTPP Data</span><span class="tag">Roesler Fatigue Model</span>
+            </div>
+          </div>
+          <div class="proj-card-col">
+            <p class="proj-col-label">Impact</p>
+            <p class="proj-col-text">Established data-driven transfer functions matching localized environmental and traffic constraints, providing the core structural logic for the national pavement design software.</p>
+            <div class="proj-col-tags">
+              <span class="tag">National Software</span><span class="tag">CRCP / JPCP</span><span class="tag">30-Year Design</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-media">
+          <p class="proj-media-label">Figure — M-E Transfer Function Calibration</p>
+          <image-slot id="proj-expd" placeholder="Drag transfer-function chart or CRCP/JPCP design figure here" shape="rounded"></image-slot>
+        </div>
+      </div>
+
+      <!-- PROJECT 1 -->
+      <div class="proj-card">
+        <div class="proj-card-head">
+          <div class="proj-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+          </div>
+          <div class="proj-card-head-info">
+            <p class="proj-card-title">Icing Accident Risk Prediction Model</p>
+            <div class="proj-card-meta">
+              <span class="proj-status complete">Submitted</span>
+              <span style="font-size:12px;color:var(--text-tertiary)">Machine Learning · Road Safety</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-col">
+            <p class="proj-col-label">Overview</p>
+            <p class="proj-col-text">Binary classification of icing accident risk on Korean national highways. Integrated weather stations, road geometry, and historical crash records into a unified feature matrix.</p>
+          </div>
+          <div class="proj-card-col">
+            <p class="proj-col-label">Methodology</p>
+            <p class="proj-col-text">Random Forest with stratified k-fold cross-validation. Feature engineering from meteorological variables (temperature drop rate, dew point delta) and road geometry attributes. Addressed class imbalance via SMOTE.</p>
+            <div class="proj-col-tags">
+              <span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">SMOTE</span>
+            </div>
+          </div>
+          <div class="proj-card-col">
+            <p class="proj-col-label">Impact</p>
+            <p class="proj-col-text">Generated section-level risk scores enabling proactive maintenance prioritization. Demonstrated superior AUROC and PR-AUC over logistic regression and SVM baselines — especially under severe class imbalance conditions.</p>
+            <div class="proj-col-tags">
+              <span class="tag">AUROC ↑</span><span class="tag">PR-AUC ↑</span><span class="tag">Risk Maps</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-media">
+          <p class="proj-media-label">Figure — Risk Map / Feature Importance Plot</p>
+          <image-slot id="proj-icing" placeholder="Drag risk map or feature importance plot here" shape="rounded"></image-slot>
+        </div>
+      </div>
+
+      <!-- PROJECT 2 -->
+      <div class="proj-card">
+        <div class="proj-card-head">
+          <div class="proj-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+          </div>
+          <div class="proj-card-head-info">
+            <p class="proj-card-title">EMAS Fracture Behavior — Finite Element Analysis</p>
+            <div class="proj-card-meta">
+              <span class="proj-status complete">Completed</span>
+              <span style="font-size:12px;color:var(--text-tertiary)">Structural Mechanics · Aviation Safety</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-col">
+            <p class="proj-col-label">Overview</p>
+            <p class="proj-col-text">Simulated fracture mechanics of Engineered Material Arresting Systems (EMAS) — crushable foam beds used at runway ends to decelerate overrunning aircraft — under realistic compressive loading.</p>
+          </div>
+          <div class="proj-card-col">
+            <p class="proj-col-label">Methodology</p>
+            <p class="proj-col-text">Nonlinear FEA in ABAQUS using the Crushable Foam Model coupled with Cohesive Zone Modeling (CZM) to simulate progressive crack initiation and propagation. Constitutive parameters calibrated from laboratory compression data.</p>
+            <div class="proj-col-tags">
+              <span class="tag">ABAQUS</span><span class="tag">Crushable Foam</span><span class="tag">CZM</span>
+            </div>
+          </div>
+          <div class="proj-card-col">
+            <p class="proj-col-label">Impact</p>
+            <p class="proj-col-text">Produced validated load-displacement curves and fracture toughness parameters directly applicable to EMAS material selection and geometry optimization — reducing reliance on costly physical crash tests.</p>
+            <div class="proj-col-tags">
+              <span class="tag">Fracture Toughness</span><span class="tag">Cost Reduction</span><span class="tag">Design Param.</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-media">
+          <p class="proj-media-label">Figure — ABAQUS FEA Stress / Damage Contour</p>
+          <image-slot id="proj-emas" placeholder="Drag ABAQUS contour plot or load-displacement curve here" shape="rounded"></image-slot>
+        </div>
+      </div>
+
+      <!-- PROJECT 3 -->
+      <div class="proj-card">
+        <div class="proj-card-head">
+          <div class="proj-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><polygon points="3 11 22 2 13 21 11 13 3 11"/></svg>
+          </div>
+          <div class="proj-card-head-info">
+            <p class="proj-card-title">Highway Geometric Structure Estimation via GIS &amp; DEM</p>
+            <div class="proj-card-meta">
+              <span class="proj-status complete">Completed</span>
+              <span style="font-size:12px;color:var(--text-tertiary)">Geospatial Analysis · Infrastructure Inventory</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-col">
+            <p class="proj-col-label">Overview</p>
+            <p class="proj-col-text">Automated extraction of horizontal curve radius and vertical longitudinal grades from national highway networks — eliminating the need for manual field surveys or construction drawing digitization.</p>
+          </div>
+          <div class="proj-card-col">
+            <p class="proj-col-label">Methodology</p>
+            <p class="proj-col-text">5m-resolution DEM resampled and centerline-extracted via GIS. Applied least-squares circular curve fitting to point sequences for radius estimation; slope computed from smoothed elevation profiles.</p>
+            <div class="proj-col-tags">
+              <span class="tag">ArcGIS</span><span class="tag">DEM (5m)</span><span class="tag">Curve Fitting</span>
+            </div>
+          </div>
+          <div class="proj-card-col">
+            <p class="proj-col-label">Impact</p>
+            <p class="proj-col-text">Validated against as-built drawings with strong RMSE and MAE performance. Scalable to full national highway inventory — enabling data-driven geometric risk classification without field personnel deployment.</p>
+            <div class="proj-col-tags">
+              <span class="tag">RMSE / MAE ↓</span><span class="tag">Scalable</span><span class="tag">Inventory</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-media">
+          <p class="proj-media-label">Figure — GIS / DEM Geometric Extraction Output</p>
+          <image-slot id="proj-gis" placeholder="Drag QGIS map or curve-fitting figure here" shape="rounded"></image-slot>
+        </div>
+      </div>
+
+      <!-- PROJECT 4 -->
+      <div class="proj-card">
+        <div class="proj-card-head">
+          <div class="proj-icon">
+            <svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+          </div>
+          <div class="proj-card-head-info">
+            <p class="proj-card-title">Physics-Informed ML for Pavement Distress Prediction</p>
+            <div class="proj-card-meta">
+              <span class="proj-status ongoing">In Progress — M.S. Research</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-card-body">
+          <div class="proj-card-col">
+            <p class="proj-col-label">Overview</p>
+            <p class="proj-col-text">Developing a PIML framework that embeds pavement constitutive equations (fatigue, thermal cracking) as hard constraints within neural network training — combining physical interpretability with data efficiency.</p>
+          </div>
+          <div class="proj-card-col">
+            <p class="proj-col-label">Methodology</p>
+            <p class="proj-col-text">Physics loss terms derived from fracture mechanics (Paris' Law, Eshelby inclusion theory) added to standard MSE loss. Architecture: residual network with physics-constrained output layers trained on pavement monitoring sensor data.</p>
+            <div class="proj-col-tags">
+              <span class="tag">PyTorch</span><span class="tag">PIML</span><span class="tag">Paris' Law</span>
+            </div>
+          </div>
+          <div class="proj-card-col">
+            <p class="proj-col-label">Impact</p>
+            <p class="proj-col-text">Targeting improved generalization with limited labeled field data — a critical bottleneck in pavement condition monitoring. Expected to demonstrate physics-consistent predictions even in data-sparse pavement sections.</p>
+            <div class="proj-col-tags">
+              <span class="tag">Generalization</span><span class="tag">Data Efficiency</span><span class="tag">Ongoing</span>
+            </div>
+          </div>
+        </div>
+        <div class="proj-media">
+          <p class="proj-media-label">Figure — PIML Architecture / Physics Loss Diagram</p>
+          <image-slot id="proj-piml" placeholder="Drag PIML architecture diagram or loss-curve plot here" shape="rounded"></image-slot>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <p class="sec-label">Awards &amp; Honors</p>
+
+    <div class="award-item">
+      <div class="award-year">2026 Spring</div>
+      <div>
+        <p class="award-name">Best Paper Award — KSRE Spring Conference</p>
+        <p class="award-org">Korean Society of Road Engineers (KSRE)</p>
+      </div>
+    </div>
+
+    <div class="award-item">
+      <div class="award-year">Jan 2026</div>
+      <div>
+        <p class="award-name">Best Case Award — Graduate School Excellence Case Contest</p>
+        <p class="award-org">Inha University</p>
+      </div>
+    </div>
+
+    <div class="award-item">
+      <div class="award-year">2025 –<br>2027</div>
+      <div>
+        <p class="award-name">Graduate Research &amp; Teaching Assistantship</p>
+        <p class="award-org">Inha University</p>
+      </div>
+    </div>
+
+    <div class="award-item">
+      <div class="award-year">2021 –<br>2023</div>
+      <div>
+        <p class="award-name">Academic Merit Scholarship</p>
+        <p class="award-org">Department of Civil Engineering, Inha University</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <p class="sec-label">Skills &amp; Tools</p>
+    <div class="skills-grid">
+      <div>
+        <p class="skill-group-title">Computational &amp; FEA</p>
+        <ul class="skill-list">
+          <li>ABAQUS (Nonlinear FEA)</li>
+          <li>Python (Random Forest, ML pipelines)</li>
+          <li>AutoCAD &amp; Revit 2025</li>
+        </ul>
+      </div>
+      <div>
+        <p class="skill-group-title">Geospatial &amp; Data</p>
+        <ul class="skill-list">
+          <li>QGIS &amp; GIS spatial analysis</li>
+          <li>Digital Elevation Models (DEM)</li>
+          <li>Statistical analysis &amp; visualization</li>
+        </ul>
+      </div>
+      <div>
+        <p class="skill-group-title">Domain Knowledge</p>
+        <ul class="skill-list">
+          <li>Pavement material mechanics</li>
+          <li>Fracture &amp; fatigue mechanics</li>
+          <li>Concrete Damaged Plasticity (CDP)</li>
+          <li>Infrastructure risk assessment</li>
+          <li>Physics-Informed ML (PIML)</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching">
+    <p class="sec-label">Teaching, Experience &amp; Service</p>
+
+    <div class="list-item">
+      <div class="list-year">2025</div>
+      <div>
+        <p class="list-title">Teaching Assistant — Highway &amp; Airfield Pavement</p>
+        <p class="list-sub">Inha University (Dual Degree Program with Baku Engineering University) · Supported international undergraduate students from BEU in pavement design theory, material behavior, and structural analysis coursework.</p>
+      </div>
+    </div>
+
+    <div class="list-item">
+      <div class="list-year">2025 –<br>2027</div>
+      <div>
+        <p class="list-title">Graduate Research &amp; Teaching Assistant</p>
+        <p class="list-sub">Inha University · Supporting graduate-level courses and research activities within the Road &amp; Airfield Lab.</p>
+      </div>
+    </div>
+
+    <div class="list-item">
+      <div class="list-year">Mar 2026</div>
+      <div>
+        <p class="list-title">Technical Translator — KICT (Freelance)</p>
+        <p class="list-sub">KICT · Translated technical documentation for <em>Advanced Digital Road Management for Mongolia's National Roads using K-Smart RMS</em>.</p>
+      </div>
+    </div>
+
+    <div class="list-item">
+      <div class="list-year">Jul 2024</div>
+      <div>
+        <p class="list-title">Intern — Construction Division</p>
+        <p class="list-sub">County Office, Construction Division · Gained practical exposure to civil infrastructure administration and construction project management.</p>
+      </div>
+    </div>
+
+    <div class="list-item">
+      <div class="list-year">Jul 2019</div>
+      <div>
+        <p class="list-title">Intern — Construction Division</p>
+        <p class="list-sub">County Office, Construction Division · Road facilities management and land price review.</p>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="sec-label">Contact</p>
+    <h2 class="contact-headline">Open to <em>research collaborations</em> and<br>Ph.D. opportunities.</h2>
+    <p class="contact-sub">I'm actively applying to PhD programs in Civil Engineering, Infrastructure Systems, and related fields. Feel free to reach out.</p>
+
+    <div class="contact-links">
+      <a href="mailto:jiho2646@naver.com" class="contact-link">
+        <span class="contact-link-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+        </span>
+        jiho2646@naver.com
+      </a>
+      <a href="https://www.linkedin.com/in/jhc99" target="_blank" class="contact-link">
+        <span class="contact-link-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </span>
+        linkedin.com/in/jhc99
+      </a>
+      <a href="https://github.com/jiho2646" target="_blank" class="contact-link">
+        <span class="contact-link-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        </span>
+        github.com/jiho2646
+      </a>
+      <a href="https://scholar.google.com/" target="_blank" class="contact-link">
+        <span class="contact-link-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </span>
+        Google Scholar
+      </a>
+      <a href="https://orcid.org/" target="_blank" class="contact-link">
+        <span class="contact-link-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 8v8M8 6v.01M11 11v5M11 11c0-1.7 1.5-3 3.5-3s3.5 1.3 3.5 3-1.5 3-3.5 3"/></svg>
+        </span>
+        ORCID iD
+      </a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>© 2026 Ji-Ho Choi (최지호)</p>
+  <p>Inha University · Incheon, South Korea</p>
+</footer>
+
+<!-- TWEAKS PANEL -->
+<div id="tweaks-panel">
+  <h3>Tweaks</h3>
+  <div class="tweak-row">
+    <label>Accent Color</label>
+    <input type="color" id="tw-accent" value="#1d4ed8" />
+  </div>
+  <div class="tweak-row">
+    <label>Font Style</label>
+    <select id="tw-font">
+      <option value="'DM Sans', sans-serif">DM Sans (default)</option>
+      <option value="'Helvetica Neue', Helvetica, sans-serif">Helvetica Neue</option>
+      <option value="Georgia, serif">Georgia (serif)</option>
+    </select>
+  </div>
+  <div class="tweak-row">
+    <label>Background</label>
+    <select id="tw-bg">
+      <option value="#f8f8f7">Warm Off-White (default)</option>
+      <option value="#ffffff">Pure White</option>
+      <option value="#f0f4ff">Cool Blue Tint</option>
+      <option value="#0d0d0d">Dark Mode</option>
+    </select>
+  </div>
+</div>
+
+<script>
+  const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+    "accent": "#0c329d",
+    "font": "'DM Sans', sans-serif",
+    "bg": "#f8f8f7"
+  }/*EDITMODE-END*/;
+
+  function applyTweaks(t) {
+    const r = document.documentElement.style;
+    r.setProperty('--accent', t.accent);
+    r.setProperty('--accent-light', t.accent + '18');
+    r.setProperty('--bg', t.bg);
+    if (t.bg === '#0d0d0d') {
+      r.setProperty('--text', '#f0f0ee');
+      r.setProperty('--text-secondary', '#9b9b93');
+      r.setProperty('--text-tertiary', '#6b6b65');
+      r.setProperty('--surface', '#1a1a18');
+      r.setProperty('--border', '#2e2e2c');
+    } else {
+      r.setProperty('--text', '#111110');
+      r.setProperty('--text-secondary', '#6b6b65');
+      r.setProperty('--text-tertiary', '#9b9b93');
+      r.setProperty('--surface', '#ffffff');
+      r.setProperty('--border', '#e5e5e2');
+    }
+    document.body.style.fontFamily = t.font;
+    document.getElementById('tw-accent').value = t.accent;
+    document.getElementById('tw-font').value = t.font;
+    document.getElementById('tw-bg').value = t.bg;
+  }
+
+  applyTweaks(TWEAK_DEFAULTS);
+
+  document.getElementById('tw-accent').addEventListener('input', e => {
+    TWEAK_DEFAULTS.accent = e.target.value;
+    applyTweaks(TWEAK_DEFAULTS);
+    window.parent.postMessage({type:'__edit_mode_set_keys', edits: TWEAK_DEFAULTS}, '*');
+  });
+
+  document.getElementById('tw-font').addEventListener('change', e => {
+    TWEAK_DEFAULTS.font = e.target.value;
+    applyTweaks(TWEAK_DEFAULTS);
+    window.parent.postMessage({type:'__edit_mode_set_keys', edits: TWEAK_DEFAULTS}, '*');
+  });
+
+  document.getElementById('tw-bg').addEventListener('change', e => {
+    TWEAK_DEFAULTS.bg = e.target.value;
+    applyTweaks(TWEAK_DEFAULTS);
+    window.parent.postMessage({type:'__edit_mode_set_keys', edits: TWEAK_DEFAULTS}, '*');
+  });
+
+  window.addEventListener('message', e => {
+    if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks-panel').classList.add('visible');
+    if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').classList.remove('visible');
+  });
+  window.parent.postMessage({type:'__edit_mode_available'}, '*');
+</script>
+
+<script src="image-slot.js"></script>
+</body>
+</html>
